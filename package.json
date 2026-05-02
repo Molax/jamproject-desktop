@@ -1,0 +1,15 @@
+{
+  "name": "jamproject-desktop",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Desktop wrapper for jamproject.net with Discord Rich Presence",
+  "scripts": {
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build",
+    "icons": "tauri icon"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.1.0"
+  }
+}
