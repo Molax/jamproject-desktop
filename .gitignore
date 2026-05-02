@@ -7,3 +7,5 @@ src-tauri/gen/
 .env.local
 .vscode/
 .idea/
+.tmp-source-icon.png
+.tmp-build.log
