@@ -6,7 +6,7 @@ use discord_rich_presence::{
 };
 use serde::Deserialize;
 
-const DISCORD_CLIENT_ID: &str = "REPLACE_WITH_DISCORD_APPLICATION_ID";
+const DISCORD_CLIENT_ID: &str = "1500279117923225630";
 
 pub struct PresenceState {
     client: Mutex<Option<DiscordIpcClient>>,
