@@ -16,12 +16,20 @@ impl PresenceState {
     pub fn new() -> Self {
         let mut client = DiscordIpcClient::new(DISCORD_CLIENT_ID).ok();
         if let Some(c) = client.as_mut() {
-            let _ = c.connect();
+            if c.connect().is_ok() {
+                let _ = c.set_activity(idle_activity());
+            }
         }
         Self {
             client: Mutex::new(client),
         }
     }
+}
+
+fn idle_activity() -> Activity<'static> {
+    Activity::new()
+        .details("Torne-se uma Lenda")
+        .state("Escolhendo música")
 }
 
 #[derive(Debug, Deserialize)]
@@ -86,6 +94,6 @@ pub fn clear_activity(state: &PresenceState) -> Result<(), Box<dyn std::error::E
     let Some(client) = guard.as_mut() else {
         return Ok(());
     };
-    client.clear_activity()?;
+    client.set_activity(idle_activity())?;
     Ok(())
 }
