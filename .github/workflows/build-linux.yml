@@ -43,6 +43,7 @@ jobs:
           releaseName: ${{ github.ref_type == 'tag' && github.ref_name || '' }}
           releaseDraft: true
           prerelease: false
+          args: --bundles deb,appimage,rpm
 
       - uses: actions/upload-artifact@v4
         with:
