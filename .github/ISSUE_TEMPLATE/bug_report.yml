@@ -1,0 +1,90 @@
+name: 🐛 Bug report
+description: Something in the desktop app is broken or misbehaving
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug! Please fill in as much as you can — the more we know, the faster we can fix it.
+
+        **Note:** if your bug is about gameplay, scoring, charting, or anything in the web app itself, please file it at [jamproject.net/contact](https://jamproject.net/contact) instead. This repo is only the Windows desktop wrapper.
+
+  - type: input
+    id: app_version
+    attributes:
+      label: App version
+      description: Visible in the installer file name (e.g. `JamProject-windows-x64.exe` or the version in **Settings → About** once we add it).
+      placeholder: "v1.0.0"
+    validations:
+      required: true
+
+  - type: input
+    id: windows_version
+    attributes:
+      label: Windows version
+      description: Run `winver` from the Run dialog (Win + R) and paste the build number.
+      placeholder: "Windows 11 Pro 23H2 (build 22631.3447)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: discord_state
+    attributes:
+      label: Discord state
+      description: Only relevant for Rich Presence issues.
+      options:
+        - Not applicable — this isn't a Discord issue
+        - Discord is running and logged in
+        - Discord is closed
+        - Discord is minimised to tray
+        - Discord PTB / Canary
+    validations:
+      required: false
+
+  - type: textarea
+    id: what_happened
+    attributes:
+      label: What happened?
+      description: A clear description of the problem.
+      placeholder: "When I launch the app, the window opens for half a second and then closes."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+      placeholder: "The window should stay open and show jamproject.net."
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Install JamProject-windows-x64.exe
+        2. Double-click the desktop shortcut
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs (optional)
+      description: |
+        If you can, attach screenshots, a recording, or the contents of `%LOCALAPPDATA%\net.jamproject.desktop\logs\` (if it exists).
+      placeholder: "Drag-and-drop files here, or paste log lines as a code block."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched [existing issues](https://github.com/Molax/jamproject-desktop/issues) and didn't find a duplicate.
+          required: true
+        - label: This bug is specifically about the **desktop app** — not gameplay, scoring, or anything in the web app.
+          required: true
