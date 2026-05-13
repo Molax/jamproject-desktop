@@ -1,0 +1,32 @@
+name: ✨ Feature request
+description: Suggest an idea for the desktop app
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Got an idea? Drop it below. Reminder: this repo is the **desktop wrapper only** — gameplay and web feature requests belong at [jamproject.net/contact](https://jamproject.net/contact).
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      placeholder: "Right now I can't tell when the app is using GPU acceleration vs falling back to software rendering."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: What's your proposed solution?
+      placeholder: "Add a system tray menu item that shows the current renderer + a checkbox to toggle hardware acceleration."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered
+      placeholder: "Could be a CLI flag, but a tray menu is more discoverable."
+    validations:
+      required: false
