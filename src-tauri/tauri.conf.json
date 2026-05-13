@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "JamProject",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "identifier": "net.jamproject.desktop",
   "build": {
     "frontendDist": "../dist"
@@ -35,10 +35,20 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ],
+    "publisher": "JamProject",
+    "homepage": "https://jamproject.net",
+    "shortDescription": "JamProject Desktop — rhythm game",
+    "longDescription": "Desktop edition of JamProject (jamproject.net) — Flash-era rhythm game revival with Discord Rich Presence.",
+    "copyright": "© JamProject",
+    "category": "Game",
     "windows": {
       "nsis": {
         "installMode": "perMachine",
-        "languages": ["English", "PortugueseBR"]
+        "languages": ["English", "PortugueseBR"],
+        "installerIcon": "icons/installer-icon.ico",
+        "headerImage": "icons/header.bmp",
+        "sidebarImage": "icons/sidebar.bmp",
+        "displayLanguageSelector": true
       }
     }
   }
