@@ -48,11 +48,11 @@ jobs:
           releaseDraft: true
           prerelease: false
 
+      - name: list bundle output
+        run: ls -laR src-tauri/target/release/bundle || true
+
       - uses: actions/upload-artifact@v4
         with:
           name: linux-bundles
           if-no-files-found: error
-          path: |
-            **/bundle/deb/*.deb
-            **/bundle/appimage/*.AppImage
-            **/bundle/rpm/*.rpm
+          path: src-tauri/target/release/bundle/
