@@ -4,12 +4,13 @@
 
 # JamProject Desktop
 
-**The web rhythm game [JamProject](https://jamproject.net), packaged as a native Windows app — with Discord Rich Presence, lower input latency, and the system WebView2 instead of a bundled Chromium.**
+**The web rhythm game [JamProject](https://jamproject.net), packaged as a native desktop app for Windows and Linux — with Discord Rich Presence and lower input latency than the browser.**
 
 [![Latest Release](https://img.shields.io/github/v/release/Molax/jamproject-desktop?style=flat-square&color=blue&label=latest)](https://github.com/Molax/jamproject-desktop/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/Molax/jamproject-desktop/total?style=flat-square&color=green)](https://github.com/Molax/jamproject-desktop/releases)
 [![License](https://img.shields.io/badge/license-MIT-purple?style=flat-square)](LICENSE)
-[![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6?style=flat-square&logo=windows)](#-requirements)
+[![Windows](https://img.shields.io/badge/Windows-10%2F11-0078D6?style=flat-square&logo=windows)](#-windows-install)
+[![Linux](https://img.shields.io/badge/Linux-AppImage%20%C2%B7%20deb%20%C2%B7%20rpm-FCC624?style=flat-square&logo=linux&logoColor=black)](#-linux-install)
 [![Built with Tauri](https://img.shields.io/badge/built%20with-Tauri%20v2-FFC131?style=flat-square&logo=tauri&logoColor=black)](https://tauri.app/)
 [![Discord Rich Presence](https://img.shields.io/badge/Discord-Rich%20Presence-5865F2?style=flat-square&logo=discord&logoColor=white)](#-discord-rich-presence)
 
@@ -26,20 +27,31 @@
 
 ## ⬇ Download
 
+### 🪟 Windows 10/11 (x64)
+
 | Source | Link |
 | :--- | :--- |
-| 🪟 **Windows installer (recommended)** | [`JamProject-windows-x64.exe`](https://github.com/Molax/jamproject-desktop/releases/latest) |
-| 🌐 **CDN mirror** (Cloudflare R2) | [`cdn.jamproject.net/desktop/JamProject-latest-windows-x64.exe`](https://cdn.jamproject.net/desktop/JamProject-latest-windows-x64.exe) |
-| 🔎 **Verification guide** | [jamproject.net/download](https://jamproject.net/download) |
+| **GitHub Releases (NSIS installer)** | [`JamProject-windows-x64.exe`](https://github.com/Molax/jamproject-desktop/releases/latest/download/JamProject-windows-x64.exe) |
+| **CDN mirror** (Cloudflare R2) | [`cdn.jamproject.net/desktop/JamProject-latest-windows-x64.exe`](https://cdn.jamproject.net/desktop/JamProject-latest-windows-x64.exe) |
 
-Each release ships with a `.sha256` sidecar so you can verify the file is byte-identical to what was published. See [Verifying your download](#-verifying-your-download).
+### 🐧 Linux (x86_64)
+
+| Distro | Format | Download |
+| :--- | :--- | :--- |
+| **Any** (distro-agnostic) | AppImage | [`JamProject-linux-x64.AppImage`](https://github.com/Molax/jamproject-desktop/releases/latest/download/JamProject-linux-x64.AppImage) · [CDN mirror](https://cdn.jamproject.net/desktop/JamProject-latest-linux-x64.AppImage) |
+| **Debian, Ubuntu, Mint** | .deb | [`JamProject-linux-x64.deb`](https://github.com/Molax/jamproject-desktop/releases/latest/download/JamProject-linux-x64.deb) · [CDN mirror](https://cdn.jamproject.net/desktop/JamProject-latest-linux-x64.deb) |
+| **Fedora, openSUSE, RHEL** | .rpm | [`JamProject-linux-x64.rpm`](https://github.com/Molax/jamproject-desktop/releases/latest/download/JamProject-linux-x64.rpm) · [CDN mirror](https://cdn.jamproject.net/desktop/JamProject-latest-linux-x64.rpm) |
+
+### 🔎 Verification
+
+Every asset ships with a `.sha256` sidecar next to it. The download page at [**jamproject.net/download**](https://jamproject.net/download) renders the live hashes and a step-by-step guide. See also [Verifying your download](#-verifying-your-download) below.
 
 ## ✨ Features
 
-- 🪟 **Native Windows window** — no browser chrome, proper Win11 styling
+- 🪟 **Native window on Windows and Linux** — no browser chrome, proper OS integration
 - ⚡ **Lower input latency** than the browser — no extra DOM/process layers between you and the audio clock
 - 🎮 **Discord Rich Presence** — your current song, difficulty, mode, and elapsed time show in your status
-- 📦 **Tiny footprint** — ~5 MB installer, ~50 MB on disk; reuses the system WebView2 instead of bundling Chromium
+- 📦 **Tiny footprint** — ~1 MB Windows installer / ~1.4 MB .deb/.rpm; reuses the system WebView2 (Windows) / WebKitGTK (Linux) instead of bundling Chromium
 - 🔌 **Always up to date** — the app loads `https://jamproject.net`, so every web update is instant; no auto-updater dance
 - 🔒 **Open-source, reproducible build** — audit the code, compile it yourself, diff against the binary
 
@@ -69,22 +81,63 @@ The app uses Discord's local IPC socket (no API tokens), so it works offline and
 
 ## 💻 Requirements
 
+### Windows
 - **OS:** Windows 10 (build 17763+) or Windows 11 — x64
 - **Disk:** ~50 MB
 - **WebView2 Runtime:** preinstalled on Windows 11; auto-installed by the NSIS bundle on Windows 10 if missing
+
+### Linux
+- **Architecture:** x86_64
+- **AppImage:** runs on any modern distro (glibc 2.31+, FUSE)
+- **.deb:** Debian 11+, Ubuntu 22.04+, Linux Mint 21+
+- **.rpm:** Fedora 38+, openSUSE Leap 15.5+, RHEL 9+
+- **WebKitGTK 4.1:** preinstalled on most modern desktops; pulled in as a dependency by .deb / .rpm
+
+### Both
+- **Disk:** ~50 MB free
 - **Discord** *(optional)* — only needed for Rich Presence; the app works fine without it
+
+## 🪟 Windows install
+
+Download the `.exe` and double-click it. The NSIS installer adds a Start menu entry and desktop shortcut. See [About the Windows SmartScreen warning](#%EF%B8%8F-about-the-windows-smartscreen-warning) below if Defender blocks the first launch.
+
+## 🐧 Linux install
+
+```bash
+# AppImage (any distro) — no install, just run
+chmod +x JamProject-linux-x64.AppImage
+./JamProject-linux-x64.AppImage
+
+# Debian / Ubuntu / Mint
+sudo dpkg -i JamProject-linux-x64.deb
+# (fix missing deps if needed: sudo apt-get install -f)
+
+# Fedora / openSUSE / RHEL
+sudo rpm -i JamProject-linux-x64.rpm
+# or:  sudo dnf install ./JamProject-linux-x64.rpm
+```
+
+Both `.deb` and `.rpm` register the app with your desktop environment (icon, MIME types, `.desktop` launcher entry).
 
 ## 🔐 Verifying your download
 
-Every release publishes the SHA-256 hash of the `.exe` next to the binary. To verify:
+Every release publishes the SHA-256 hash of each binary next to it (`.sha256` sidecar files). To verify:
+
+**Windows (PowerShell):**
 
 ```powershell
-# 1. Download both JamProject-windows-x64.exe and JamProject-windows-x64.exe.sha256
-# 2. From the same folder, run:
 Get-FileHash .\JamProject-windows-x64.exe
-
-# 3. Compare the Hash field to the contents of the .sha256 file. They must match.
 ```
+
+**Linux (bash):**
+
+```bash
+sha256sum -c JamProject-linux-x64.AppImage.sha256
+# Or manually:
+sha256sum JamProject-linux-x64.AppImage
+```
+
+Compare the output to the contents of the `.sha256` file. They must match exactly.
 
 For extra paranoia, upload the file to [VirusTotal](https://www.virustotal.com) to scan it against 70+ antivirus engines. The build is reproducible from this repository — feel free to compile yourself and diff against the released binary.
 
